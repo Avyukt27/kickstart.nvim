@@ -6,11 +6,11 @@ return {
       python = {
         analysis = {
           typeCheckingMode = 'strict',
-          autoSearchPairs = true,
-          usLibraryCodeForTypes = true,
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
           diagnosticMode = 'workspace',
           diagnosticSeverityOverrides = {
-            reportMissingImport = 'warning',
+            reportMissingImports = 'warning',
             reportUnusedImport = 'warning',
           },
           inlayHints = {
@@ -21,6 +21,7 @@ return {
       },
     },
   },
+  ruff = {},
   -- rust_analyzer = {},
   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
   --
