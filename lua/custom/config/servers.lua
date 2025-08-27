@@ -2,26 +2,33 @@ return {
   -- clangd = {},
   -- gopls = {},
   pyright = {
+    on_attach = function(client, _)
+      client.server_capabilities.hoverProvider = true
+      client.server_capabilities.diagnosticProvider = false
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.codeActionProvider = false
+    end,
     settings = {
+      pyright = {
+        disableOrganizeImports = true,
+      },
       python = {
         analysis = {
           typeCheckingMode = 'strict',
-          autoSearchPaths = true,
-          useLibraryCodeForTypes = true,
-          diagnosticMode = 'workspace',
-          diagnosticSeverityOverrides = {
-            reportMissingImports = 'warning',
-            reportUnusedImport = 'warning',
-          },
-          inlayHints = {
-            variableTypes = true,
-            functionReturnTypes = true,
-          },
         },
       },
     },
   },
-  ruff = {},
+  ruff = {
+    on_attach = function(client, _)
+      client.server_capabilities.hoverProvider = false
+    end,
+    init_options = {
+      settings = {
+        logLevel = 'debug',
+      },
+    },
+  },
   -- rust_analyzer = {},
   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
   --
