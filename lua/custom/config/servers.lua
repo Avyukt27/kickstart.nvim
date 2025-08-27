@@ -1,7 +1,26 @@
 return {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = 'strict',
+          autoSearchPairs = true,
+          usLibraryCodeForTypes = true,
+          diagnosticMode = 'workspace',
+          diagnosticSeverityOverrides = {
+            reportMissingImport = 'warning',
+            reportUnusedImport = 'warning',
+          },
+          inlayHints = {
+            variableTypes = true,
+            functionReturnTypes = true,
+          },
+        },
+      },
+    },
+  },
   -- rust_analyzer = {},
   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
   --
